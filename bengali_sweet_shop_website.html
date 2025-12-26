@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mishtikhai | Bengali Sweets</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff8f0;
+      color: #333;
+    }
+    header {
+      background: #8b0000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0; }
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .sweets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .sweet-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+    }
+    .sweet-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .sweet-card h3 {
+      margin: 10px 0 5px;
+    }
+    .sweet-card select {
+      padding: 6px;
+      margin-top: 8px;
+      width: 100%;
+    }
+    .sweet-card button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      background: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .sweet-card button:hover {
+      background: #a30000;
+    }
+    .order-form {
+      margin-top: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .order-form h2 {
+      margin-top: 0;
+    }
+    .order-form input, .order-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .order-form button {
+      background: #006400;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 40px;
+      background: #8b0000;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍬 Mishtikhai | মিষ্টিখাই</h1>
+  <p>Authentic Bengali Sweets | খাঁটি বাংলা মিষ্টি | Home Delivery</p>
+</header>
+
+<div class="container">
+  <h2>Our Sweet Items</h2>
+  <div class="sweets">
+    <div class="sweet-card">
+      <img src="https://i.imgur.com/5ZQZ5YF.jpg" alt="Roshogolla">
+      <h3>Roshogolla</h3>
+      <select>
+        <option>1 KG</option>
+        <option>2 KG</option>
+        <option>3 KG</option>
+        <option>4 KG</option>
+        <option>5 KG</option>
+      </select>
+      <button>Add to Order</button>
+    </div>
+
+    <div class="sweet-card">
+      <img src="https://i.imgur.com/4yKXWzF.jpg" alt="Sandesh">
+      <h3>Sandesh</h3>
+      <select>
+        <option>1 KG</option>
+        <option>2 KG</option>
+        <option>3 KG</option>
+        <option>4 KG</option>
+        <option>5 KG</option>
+      </select>
+      <button>Add to Order</button>
+    </div>
+
+    <div class="sweet-card">
+      <img src="https://i.imgur.com/9n5zN9X.jpg" alt="Mishti Doi">
+      <h3>Mishti Doi</h3>
+      <select>
+        <option>1 KG</option>
+        <option>2 KG</option>
+        <option>3 KG</option>
+        <option>4 KG</option>
+        <option>5 KG</option>
+      </select>
+      <button>Add to Order</button>
+    </div>
+
+    <div class="sweet-card">
+      <img src="https://i.imgur.com/FT2Xz1d.jpg" alt="Chomchom">
+      <h3>Chomchom</h3>
+      <select>
+        <option>1 KG</option>
+        <option>2 KG</option>
+        <option>3 KG</option>
+        <option>4 KG</option>
+        <option>5 KG</option>
+      </select>
+      <button>Add to Order</button>
+    </div>
+  </div>
+
+  <div class="order-form">
+    <h2>Confirm Your Order | অর্ডার নিশ্চিত করুন</h2>
+    <input type="text" id="name" placeholder="Your Full Name | আপনার নাম" required />
+    <input type="tel" id="phone" placeholder="Phone Number | ফোন নাম্বার" required />
+    <textarea rows="4" id="address" placeholder="Delivery Address | ঠিকানা" required></textarea>
+    <button onclick="sendToMessenger()">Order via Messenger 📩</button>
+    <p style="font-size:14px; margin-top:10px;">👉 Clicking the button will open Messenger with your order details.</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Bengali Mishtanno Bhandar | Order via Facebook Page</p>
+</footer>
+
+<script>
+let orderItems = [];
+
+document.querySelectorAll('.sweet-card button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.parentElement;
+    const name = card.querySelector('h3').innerText;
+    const qty = card.querySelector('select').value;
+    orderItems.push(`${name} - ${qty}`);
+    alert(name + ' added to order');
+  });
+});
+
+function sendToMessenger() {
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const address = document.getElementById('address').value;
+
+  if (!name || !phone || !address || orderItems.length === 0) {
+    alert('Please fill all details and add at least one item');
+    return;
+  }
+
+  const message = `Order from Mishtikhai%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AItems:%0A- ${orderItems.join('%0A- ')}`;
+
+  window.open(`https://m.me/YOUR_PAGE_USERNAME?text=${message}`, '_blank');
+}
+</script>
+
+</body>
+</html>
