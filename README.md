@@ -1,1 +1,1 @@
-# mihstikhaisThisa basic sweet shop website
+# mihstikhai This is a basic sweet shop website
